@@ -1,14 +1,16 @@
 <template>
   <div id="app">
     <div class="header">
-
       <h1>Asados Carbón de Leña</h1>
+
       <nav>
-        <button v-on:click="init" v-if="is_auth" > Inicio </button>
-        <button v-on:click="getBalance" v-if="is_auth" > Saldo </button>
-        <button v-if="is_auth" > Transacción </button>
-        <button v-if="is_auth" >Cerrar Sesión</button>
+        <button v-on:click="init" v-if="is_auth">Inicio</button>
+        <button v-on:click="getBalance" v-if="is_auth">Cliente</button>
+        <button v-if="is_auth">Inventario</button>
+        <button v-if="is_auth">Ventas</button>
+        <button v-if="is_auth">Cerrar Sesión</button>
       </nav>
+
     </div>
     <div class="main-component">
       <router-view></router-view>
@@ -72,7 +74,7 @@
     min-height: 100px;
 
     background-color: #181818;
-    color:#E5E7E9;
+    color:#f5a018;
 
     display: flex;
     justify-content: space-between;
