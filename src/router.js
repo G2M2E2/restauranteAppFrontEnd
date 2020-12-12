@@ -2,6 +2,7 @@ import vueRouter from 'vue-router'
 import User from './components/User'
 import UserBalance from './components/UserBalance'
 import App from './App'
+import Cliente from './components/Cliente'
 
 const router = new vueRouter({
         mode: 'history',
@@ -18,9 +19,9 @@ const router = new vueRouter({
                 component: User
             },
             {
-                path: '/user/balance/:username',
-                name: "user_balance",
-                component: UserBalance
+                path: '/cliente/:username',
+                name: "cliente",
+                component: Cliente
             },
         ]
     })

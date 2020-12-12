@@ -6,29 +6,29 @@
 </template>
 
 <script>
-  import axios from 'axios';
-  export default {
-      name: 'UserBalance',
-      data: function (){
-          return {
-              username: "",
-              balance: 0
-          }
-      },
-      created: function() {
+    import axios from 'axios';
+    export default {
+        name: 'UserBalance',
+        data: function (){
+            return {
+                username: "",
+                balance: 0
+            }
+        },
+        created: function() {
 
-          this.username = this.$route.params.username
+            this.username = this.$route.params.username
 
-          let self = this
-          axios.get("https://cajero-api2.herokuapp.com/user/balance/" + this.username)
-              .then((result) => {
-                  self.balance = result.data.balance
-              })
-              .catch((error) => {
-                  alert("ERROR Servidor");
-              });
-      }
-  }
+            let self = this
+            axios.get("https://cajero-api2.herokuapp.com/user/balance/" + this.username)
+                .then((result) => {
+                    self.balance = result.data.balance
+                })
+                .catch((error) => {
+                    alert("ERROR Servidor");
+                });
+        }
+    }
 </script>
 
 <style>

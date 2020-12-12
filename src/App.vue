@@ -5,8 +5,9 @@
       <h1>Asados Carbón de Leña</h1>
       <nav>
         <button v-on:click="init" v-if="is_auth" > Inicio </button>
-        <button v-on:click="getBalance" v-if="is_auth" > Saldo </button>
-        <button v-if="is_auth" > Transacción </button>
+        <button v-on:click="getCliente" v-if="is_auth" > Cliente </button>
+        <button v-if="is_auth" > Inventario </button>
+        <button v-if="is_auth" > Ventas </button>
         <button v-if="is_auth" >Cerrar Sesión</button>
       </nav>
     </div>
@@ -42,20 +43,20 @@
         }
       },
 
-      getBalance: function(){
-        if(this.$route.name != "user_balance"){
+      getCliente: function(){
+        if(this.$route.name != "cliente"){
           let username = localStorage.getItem("current_username")
-          this.$router.push({name: "user_balance", params:{ username: username }})
+          this.$router.push({name: "cliente", params:{ username: username }})
         }
       },
 
     },
 
     beforeCreate: function(){
-      localStorage.setItem('current_username', 'camilo24')
+      localStorage.setItem('current_username', 'Admin')
       localStorage.setItem('isAuth', true)
 
-      this.$router.push({name: "user", params:{ username: 'camilo24' }})
+      this.$router.push({name: "user", params:{ username: 'Admin' }})
     }
   }
 </script>
