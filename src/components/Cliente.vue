@@ -50,7 +50,7 @@ export default {
 
         findCliente: function () {
             let self = this
-            axios.get("http://127.0.0.1:8000/cliente/consulta/3214567895" )
+            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/consulta/3214567895" )
                 .then((result) => {
                     self.telefono = result.data.telefono
                     self.nombre = result.data.nombre
