@@ -82,7 +82,7 @@
     border-bottom: 1px solid #f5a018;
   }
   .header h1{
-    width: 20%;
+    width: 30%;
     text-align: center;
   }
   .header nav {
