@@ -3,10 +3,10 @@
         <h2 style='text-align:center'>MÓDULO DE INVENTARIOS</h2>
         <div style='text-align:left'>
             <left>
-                <button v-on:click="init"> Crear </button>
-                <button v-on:click="getBalance"> Buscar </button>
-                <button> Actualizar </button>
-                <button>Eliminar</button>
+                <button  v-on:click="findProducto">Buscar</button>
+                <button  v-on:click="createProducto">Crear</button>
+                <button>Actualizar</button>
+                <button>Eliminar</button><br><br>
             </left>
         </div>
         <center>
@@ -101,7 +101,7 @@ export default {
                     alert("ERROR Servidor");
                 });
         },
-        makeProducto: function () {
+        createProducto: function () {
             this.id = document.getElementById("idprod").value
             this.nombre = document.getElementById("nomprod").value
             this.precio = document.getElementById("precprod").value
@@ -115,7 +115,7 @@ export default {
                             "nombre": this.nombre,
                             "precio": parseInt(this.precio),
                             "cantidad": parseInt(this.cantidad),
-                            "categoria": this.categoria,
+                            "categoria": this.categoria
             })
                 .then((result) => {
                     alert("Producto Creado");
