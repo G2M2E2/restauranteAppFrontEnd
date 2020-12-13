@@ -102,20 +102,20 @@ export default {
                 });
         },
         makeProducto: function () {
-            this.idprod = document.getElementById("idprod").value
-            this.nomprod = document.getElementById("nomprod").value
-            this.precprod = document.getElementById("precprod").value
-            this.cantprod = document.getElementById("cantprod").value
-            this.catprod = document.getElementById("catprod").value
+            this.id = document.getElementById("idprod").value
+            this.nombre = document.getElementById("nomprod").value
+            this.precio = document.getElementById("precprod").value
+            this.cantidad = document.getElementById("cantprod").value
+            this.categoria = document.getElementById("catprod").value
     
             let self = this
             
             axios.post("https://restaurante-back-g1.herokuapp.com/producto/crear/", {
-                            "id": parseInt(this.idprod, 10),
-                            "nombre": this.nomprod,
-                            "precio": this.precprod,
-                            "cantidad": this.cantprod,
-                            "categoria": this.catprod,
+                            "id": this.id,
+                            "nombre": this.nombre,
+                            "precio": parseInt(this.precio),
+                            "cantidad": parseInt(this.cantidad),
+                            "categoria": this.categoria,
             })
                 .then((result) => {
                     alert("Producto Creado");
