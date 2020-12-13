@@ -6,7 +6,7 @@
                 <button  v-on:click="findProducto">Buscar</button>
                 <button  v-on:click="createProducto">Crear</button>
                 <button>Actualizar</button>
-                <button>Eliminar</button><br><br>
+                <button  v-on:click="deleteProducto">Eliminar></button>
             </left>
         </div>
         <center>
@@ -123,7 +123,28 @@ export default {
                     alert("ERROR Servidor");
                 });
 
-        }
+        },
+        deleteProducto: function () {
+            this.id = document.getElementById("idprod").value
+            let self = this
+            axios.get("https://restaurante-back-g1.herokuapp.com/producto/delete/" + this.id)
+                .then((result) => {
+                    self.id = ""
+                    self.nombre = ""
+                    self.precio = 0
+                    self.cantidad = 0
+                    self.categoria = ""
+                    
+                    document.getElementById("idprod").value = self.id;
+                    document.getElementById("nomprod").value = self.nombre;
+                    document.getElementById("precprod").value = self.precio;
+                    document.getElementById("cantprod").value = self.cantidad;
+                    document.getElementById("catprod").value = self.categoria;                 
+                })
+                .catch((error) => {
+                    alert("ERROR Servidor");
+                });
+        },
     },
 }
 </script>
