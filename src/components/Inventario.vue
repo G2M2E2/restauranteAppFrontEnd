@@ -80,22 +80,22 @@ export default {
         },
 
         findProducto: function () {
-            this.idprod = document.getElementById("idprod").value
+            this.id = document.getElementById("idprod").value
             let self = this
-            axios.get("https://restaurante-back-g1.herokuapp.com/producto/consulta/" + this.idprod)
+            axios.get("https://restaurante-back-g1.herokuapp.com/producto/consulta/" + this.id)
                 .then((result) => {
-                    self.idprod = result.data.idprod
-                    self.nomprod = result.data.nomprod
-                    self.precprod = result.data.precprod
-                    self.cantprod = result.data.cantprod
-                    self.catprod = result.data.catprod
+                    self.id = result.data.id
+                    self.nombre = result.data.nombre
+                    self.precio = result.data.precio
+                    self.cantidad = result.data.cantidad
+                    self.categoria = result.data.categoria
                     
-                    document.getElementById("idprod").value = self.idprod;
-                    document.getElementById("nomprod").value = self.nomprod;
-                    document.getElementById("precprod").value = self.precprod
-                    document.getElementById("cantprod").value = self.cantprod
-                    document.getElementById("catprod").value = self.catprod
-                    document.getElementById("11").value = "Se encontro el producto" + self.nomprod                  
+                    document.getElementById("idprod").value = self.id;
+                    document.getElementById("nomprod").value = self.nombre;
+                    document.getElementById("precprod").value = self.precio;
+                    document.getElementById("cantprod").value = self.cantidad;
+                    document.getElementById("catprod").value = self.categoria;
+                    document.getElementById("11").value = "Se encontró el producto" + self.nombre                  
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
