@@ -73,82 +73,51 @@ export default {
     methods: {
         init: function () {
         if (this.$route.name != "user") {
-            let username = input.Phone.getItem("current_username");
-            this.$router.push({ name: "user", params: { username: username } });
+            let username = input.id.getItem("current_username");
+            this.$router.push({ name: "user", params: { username: username }});
         }
         },
 
-        findCliente: function () {
-            this.telefono = document.getElementById("Phone").value
+        findProducto: function () {
+            this.id = document.getElementById("id").value
             let self = this
-            axios.get("https://restaurantemintic.herokuapp.com/producto/consulta/" + this.telefono)
+            axios.get("https://restaurantemintic.herokuapp.com/producto/consulta/" + this.id)
                 .then((result) => {
-                    self.telefono = result.data.telefono
+                    self.id = result.data.id
                     self.nombre = result.data.nombre
-                    self.direccion = result.data.direccion
-                    self.barrio = result.data.barrio
-                    self.cedula = result.data.cedula
-                    self.cumpleanos = result.data.cumpleanos
-                    document.getElementById("Phone").value = self.telefono;
-                    document.getElementById("name").value = self.nombre;
-                    document.getElementById("adress").value = self.direccion
-                    document.getElementById("zone").value = self.barrio
-                    document.getElementById("idCC").value = self.cedula
-                    document.getElementById("birth").value = self.cumpleanos
-                    document.getElementById("11").value = "Se encontro usuario" + self.nombre
+                    self.precio = result.data.precio
+                    self.cantidad = result.data.cantidad
+                    self.categoria = result.data.categoria
                     
+                    document.getElementById("id").value = self.id;
+                    document.getElementById("name").value = self.nombre;
+                    document.getElementById("price").value = self.precio
+                    document.getElementById("quantity").value = self.cantidad
+                    document.getElementById("category").value = self.categoria
+                    document.getElementById("11").value = "Se encontro el producto" + self.nombre                   
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
-
         },
-        makeCliente: function () {
-            this.telefono = document.getElementById("Phone").value
+        makeProducto: function () {
+            this.id = document.getElementById("id").value
             this.nombre = document.getElementById("name").value
-            this.direccion = document.getElementById("adress").value
-            this.barrio = document.getElementById("zone").value
-            this.cedula = document.getElementById("idCC").value
-            this.cumpleanos = document.getElementById("birth").value
-
-            /*newCliente = {
-                            "telefono": parseInt(this.telefono, 10),
-                            "nombre": this.nombre,
-                            "direccion": this.direccion,
-                            "barrio": this.barrio,
-                            "cedula": this.cedula,
-                            "cumpleanos": this.cumpleanos
-            };*/    
-
+            this.precio = document.getElementById("price").value
+            this.cantidad = document.getElementById("quantity").value
+            this.categoria = document.getElementById("category").value
+    
             let self = this
-            //const res = await axios.post('https://httpbin.org/post', { answer: 42 });
             
-            axios.post("https://restaurante-back-g1.herokuapp.com/cliente/crear/", {
-                            "telefono": parseInt(this.telefono, 10),
+            axios.post("https://restaurante-back-g1.herokuapp.com/producto/crear/", {
+                            "id": parseInt(this.telefono, 10),
                             "nombre": this.nombre,
-                            "direccion": this.direccion,
-                            "barrio": this.barrio,
-                            "cedula": this.cedula,
-                            "cumpleanos": this.cumpleanos
+                            "precio": this.precio,
+                            "cantidad": this.cantidad,
+                            "categoria": this.categoria,
             })
                 .then((result) => {
-                    alert("Cliente Creado");
-                    /*
-                    self.telefono = result.data.telefono
-                    self.nombre = result.data.nombre
-                    self.direccion = result.data.direccion
-                    self.barrio = result.data.barrio
-                    self.cedula = result.data.cedula
-                    self.cumpleanos = result.data.cumpleanos
-                    document.getElementById("Phone").value = self.telefono;
-                    document.getElementById("name").value = self.nombre;
-                    document.getElementById("adress").value = self.direccion
-                    document.getElementById("zone").value = self.barrio
-                    document.getElementById("idCC").value = self.cedula
-                    document.getElementById("birth").value = self.cumpleanos
-                    document.getElementById("11").value = "Se encontro usuario" + self.nombre
-                    */
-                    
+                    alert("Producto Creado");
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
@@ -156,24 +125,7 @@ export default {
 
         }
     },
-    /*created: function() {
-
-            this.username = this.$route.params.username
-
-            let self = this
-            axios.get("https://cajero-api2.herokuapp.com/user/balance/" + this.username)
-                .then((result) => {
-                    self.balance = result.data.balance
-                })
-                .catch((error) => {
-                    alert("ERROR Servidor");
-                });
-        }*/
-
-    
-
-};
-
+}
 </script>
 
 <style>
