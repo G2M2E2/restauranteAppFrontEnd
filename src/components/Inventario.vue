@@ -94,8 +94,7 @@ export default {
                     document.getElementById("nomprod").value = self.nombre;
                     document.getElementById("precprod").value = self.precio;
                     document.getElementById("cantprod").value = self.cantidad;
-                    document.getElementById("catprod").value = self.categoria;
-                    document.getElementById("11").value = "Se encontró el producto" + self.nombre                  
+                    document.getElementById("catprod").value = self.categoria;                 
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
