@@ -74,48 +74,48 @@ export default {
     methods: {
         init: function () {
         if (this.$route.name != "user") {
-            let username = input.id.getItem("current_username");
+            let username = input.idprod.getItem("current_username");
             this.$router.push({ name: "user", params: { username: username }});
         }
         },
 
         findProducto: function () {
-            this.id = document.getElementById("id").value
+            this.idprod = document.getElementById("idprod").value
             let self = this
-            axios.get("https://restaurantemintic.herokuapp.com/producto/consulta/" + this.id)
+            axios.get("https://restaurante-back-g1.herokuapp.com/producto/consulta/" + this.idprod)
                 .then((result) => {
-                    self.id = result.data.id
-                    self.nombre = result.data.nombre
-                    self.precio = result.data.precio
-                    self.cantidad = result.data.cantidad
-                    self.categoria = result.data.categoria
+                    self.idprod = result.data.idprod
+                    self.nomprod = result.data.nomprod
+                    self.precprod = result.data.precprod
+                    self.cantprod = result.data.cantprod
+                    self.catprod = result.data.catprod
                     
-                    document.getElementById("id").value = self.id;
-                    document.getElementById("name").value = self.nombre;
-                    document.getElementById("price").value = self.precio
-                    document.getElementById("quantity").value = self.cantidad
-                    document.getElementById("category").value = self.categoria
-                    document.getElementById("11").value = "Se encontro el producto" + self.nombre                   
+                    document.getElementById("idprod").value = self.idprod;
+                    document.getElementById("nomprod").value = self.nomprod;
+                    document.getElementById("precprod").value = self.precprod
+                    document.getElementById("cantprod").value = self.cantprod
+                    document.getElementById("catprod").value = self.catprod
+                    document.getElementById("11").value = "Se encontro el producto" + self.nomprod                  
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
         },
         makeProducto: function () {
-            this.id = document.getElementById("id").value
-            this.nombre = document.getElementById("name").value
-            this.precio = document.getElementById("price").value
-            this.cantidad = document.getElementById("quantity").value
-            this.categoria = document.getElementById("category").value
+            this.idprod = document.getElementById("idprod").value
+            this.nomprod = document.getElementById("nomprod").value
+            this.precprod = document.getElementById("precprod").value
+            this.cantprod = document.getElementById("cantprod").value
+            this.catprod = document.getElementById("catprod").value
     
             let self = this
             
             axios.post("https://restaurante-back-g1.herokuapp.com/producto/crear/", {
-                            "id": parseInt(this.telefono, 10),
-                            "nombre": this.nombre,
-                            "precio": this.precio,
-                            "cantidad": this.cantidad,
-                            "categoria": this.categoria,
+                            "id": parseInt(this.idprod, 10),
+                            "nombre": this.nomprod,
+                            "precio": this.precprod,
+                            "cantidad": this.cantprod,
+                            "categoria": this.catprod,
             })
                 .then((result) => {
                     alert("Producto Creado");
