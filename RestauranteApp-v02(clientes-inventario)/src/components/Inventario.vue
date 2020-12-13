@@ -70,6 +70,7 @@ export default {
         };
     },
 
+
     methods: {
         init: function () {
         if (this.$route.name != "user") {
