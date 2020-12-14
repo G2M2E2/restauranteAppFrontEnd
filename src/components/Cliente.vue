@@ -1,20 +1,24 @@
 <template>
     <div id="Cliente">
+        <br />
         <h2 style='text-align:center'>REGISTRO DE CLIENTES</h2>
         <h2 id="11" value=""></h2>
-        <div style='text-align:center'>
-            <right>
-                <button  v-on:click="findCliente">Buscar</button>
-                <button  v-on:click="makeCliente">Crear</button>
-                <button>Actualizar</button>
-                <button v-on:click="cleanCampos">Limpiar</button>
-                <button>Eliminar</button><br /><br />
+        <br />
         
-                
-            </right>
-        </div>
-        
-        <form style>
+        <form>
+            <div style='text-align:left'>
+                <right>
+                    <button type="button" class="btn btn-warning" v-on:click="listarC">Lista</button>
+                    <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
+                    <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
+                    <button type="button" class="btn btn-warning" >Actualizar</button>
+                    <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
+                    <button type="button" class="btn btn-warning" >Eliminar</button><br /><br />
+                    
+                    
+                </right>
+            </div>
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="Phone1">Telefono:</label>
@@ -47,8 +51,16 @@
                 </div>
             </div>
             
-        </form>
             
+            
+            
+            
+        </form>
+        <br />
+
+        <b-table sticky-header id="my-table" striped hover :items="items"></b-table>
+        <h3 style='text-align:center'>REGISTRO DE CLIENTES</h3>
+        <h4 style='text-align:center'>REGISTRO DE CLIENTES</h4>
             
         
 
@@ -61,8 +73,10 @@
 import axios from "axios";
 export default {
     name: "Cliente",
+
     data: function () {
         return {
+            
             telefono: 0,
             nombre: "",
             direccion: "",
@@ -71,6 +85,8 @@ export default {
             cumpleanos: "",
             balance: 0,
             newCliente: {},
+            items: []
+            
         };
     },
 
@@ -144,44 +160,31 @@ export default {
                 .then((result) => {
                     window.confirm("Cliente Creado");
                     
-                    /*
-                    self.telefono = result.data.telefono
-                    self.nombre = result.data.nombre
-                    self.direccion = result.data.direccion
-                    self.barrio = result.data.barrio
-                    self.cedula = result.data.cedula
-                    self.cumpleanos = result.data.cumpleanos
-                    document.getElementById("Phone").value = self.telefono;
-                    document.getElementById("name").value = self.nombre;
-                    document.getElementById("adress").value = self.direccion
-                    document.getElementById("zone").value = self.barrio
-                    document.getElementById("idCC").value = self.cedula
-                    document.getElementById("birth").value = self.cumpleanos
-                    document.getElementById("11").value = "Se encontro usuario" + self.nombre
-                    */
+                })
+                .catch((error) => {
+                    alert("ERROR Servidor");
+                });
+
+        },
+        
+        
+
+        listarC: function () {
+            let self = this
+            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/lista/")
+                .then((result) => {
+                    self.items = result.data
                     
                 })
                 .catch((error) => {
+                    
                     alert("ERROR Servidor");
+                    
                 });
-
+            
         }
-    },
-    /*created: function() {
-
-            this.username = this.$route.params.username
-
-            let self = this
-            axios.get("https://cajero-api2.herokuapp.com/user/balance/" + this.username)
-                .then((result) => {
-                    self.balance = result.data.balance
-                })
-                .catch((error) => {
-                    alert("ERROR Servidor");
-                });
-        }*/
-
-    
+        
+    },   
 
 };
 
@@ -189,6 +192,8 @@ export default {
 
 
 <style>
+
+
 #UserBalance {
     width: 100%;
     height: 100%;
@@ -205,7 +210,8 @@ export default {
     color: crimson;
     font-weight: bold;
 }
-button{
+
+/*button{
     color: #000000;
     background: #f5a018;
     border: 1px solid #007efc;
@@ -216,5 +222,6 @@ button:hover{
     color: #000000;
     background: #7fbfff;
     border: 1px solid #358035;
-}
+}*/
+
 </style>
