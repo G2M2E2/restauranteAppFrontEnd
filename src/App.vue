@@ -109,7 +109,8 @@
     border: 1px solid #E5E7E9;
   }
   .main-component{
-    height: 75vh;
+    height: auto;
+    min-height: 75vh;
     margin: 0%;
     padding: 0%;
     background: #FDFEFE ;

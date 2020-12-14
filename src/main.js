@@ -9,13 +9,19 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { DropdownPlugin, TablePlugin } from 'bootstrap-vue'
 
+
+
+
 Vue.use(DropdownPlugin)
 Vue.use(TablePlugin)
+
 
 
 Vue.use(vueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+
+
 
 Vue.config.productionTip = false
 
@@ -23,5 +29,5 @@ new Vue({
   router,
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
 })

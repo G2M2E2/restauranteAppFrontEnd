@@ -2,22 +2,10 @@
     <div id="Cliente">
         <br />
         <h2 style='text-align:center'>REGISTRO DE CLIENTES</h2>
-        <h2 id="11" value=""></h2>
         <br />
         
         <form>
-            <div style='text-align:left'>
-                <right>
-                    <button type="button" class="btn btn-warning" v-on:click="listarC">Lista</button>
-                    <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
-                    <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
-                    <button type="button" class="btn btn-warning" >Actualizar</button>
-                    <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
-                    <button type="button" class="btn btn-warning" >Eliminar</button><br /><br />
-                    
-                    
-                </right>
-            </div>
+            
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -50,6 +38,19 @@
                     
                 </div>
             </div>
+            <br />
+            <div style='text-align:center'>
+                <right>
+                    <button type="button" class="btn btn-warning" v-on:click="myProvider">Lista</button>
+                    <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
+                    <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
+                    <button type="button" class="btn btn-warning" >Actualizar</button>
+                    <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
+                    <button type="button" class="btn btn-warning" >Eliminar</button><br /><br />
+                    
+                    
+                </right>
+            </div>
             
             
             
@@ -57,11 +58,9 @@
             
         </form>
         <br />
-
-        <b-table sticky-header id="my-table" striped hover :items="items"></b-table>
-        <h3 style='text-align:center'>REGISTRO DE CLIENTES</h3>
-        <h4 style='text-align:center'>REGISTRO DE CLIENTES</h4>
-            
+        
+        <b-table sticky-header ref="table" id="my-table" striped hover :items="items"></b-table>
+                    
         
 
         
@@ -86,6 +85,7 @@ export default {
             balance: 0,
             newCliente: {},
             items: []
+            
             
         };
     },
@@ -164,25 +164,26 @@ export default {
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
+            this.$refs.table.refresh()
+            myProvider()
 
         },
-        
+        myProvider: function () {
+            console.log("Entro");
+            let self = this
+            
+            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/lista/")
+            .then((result) => {
+                self.items = result.data
+            }).catch(error => {
+                
+                alert("ERROR Servidor");
+                return []
+            })
+        },
         
 
-        listarC: function () {
-            let self = this
-            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/lista/")
-                .then((result) => {
-                    self.items = result.data
-                    
-                })
-                .catch((error) => {
-                    
-                    alert("ERROR Servidor");
-                    
-                });
-            
-        }
+        
         
     },   
 
@@ -223,5 +224,9 @@ button:hover{
     background: #7fbfff;
     border: 1px solid #358035;
 }*/
-
+b-table{
+    overflow:scroll;
+    height:10px;
+    width:500px;
+}
 </style>
