@@ -1,25 +1,26 @@
 <template>
+
   <div id="app">
-    <div class="header">
-      <h1>Asados Carbón de Leña</h1>
+  
+      <div class="header">
+        <h1>Asados Carbón de Leña</h1>
+        <nav>
+          <button v-on:click="init" v-if="is_auth">Inicio</button>
+          <button v-on:click="getCliente" v-if="is_auth" > Cliente </button>
+          <button v-if="is_auth">Inventario</button>
+          <button v-if="is_auth">Ventas</button>
+          <button v-if="is_auth">Cerrar Sesión</button>
+        </nav>
 
-      <nav>
-        <button v-on:click="init" v-if="is_auth">Inicio</button>
-        <button v-on:click="getCliente" v-if="is_auth" > Cliente </button>
-        <button v-if="is_auth">Inventario</button>
-        <button v-if="is_auth">Ventas</button>
-        <button v-if="is_auth">Cerrar Sesión</button>
-      </nav>
-
-    </div>
-    <div class="main-component">
-      <router-view></router-view>
-    </div>
-    <div class="footer">
-      <p>Calle 48 # 27-01. Barrancabermeja, Colombia<br>
-        Teléfonos: +57 323 590 9805 - 6220238 - 6021901<br>
-        E-mail: carbonlena@hotmail.com</p>
-    </div>
+      </div>
+      <div class="main-component">
+        <router-view></router-view>
+      </div>
+      <div class="footer">
+        <p>Calle 48 # 27-01. Barrancabermeja, Colombia<br>
+          Teléfonos: +57 323 590 9805 - 6220238 - 6021901<br>
+          E-mail: carbonlena@hotmail.com</p>
+      </div>
   </div>
 </template>
 
@@ -108,7 +109,8 @@
     border: 1px solid #E5E7E9;
   }
   .main-component{
-    height: 75vh;
+    height: auto;
+    min-height: 75vh;
     margin: 0%;
     padding: 0%;
     background: #FDFEFE ;
