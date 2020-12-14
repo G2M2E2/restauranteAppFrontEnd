@@ -2,38 +2,55 @@
     <div id="Cliente">
         <h2 style='text-align:center'>REGISTRO DE CLIENTES</h2>
         <h2 id="11" value=""></h2>
-        <div style='text-align:left'>
+        <div style='text-align:center'>
             <right>
                 <button  v-on:click="findCliente">Buscar</button>
                 <button  v-on:click="makeCliente">Crear</button>
                 <button>Actualizar</button>
+                <button v-on:click="cleanCampos">Limpiar</button>
                 <button>Eliminar</button><br /><br />
+        
                 
             </right>
         </div>
-        <center>
-            <form>
-                
-                <label for="Phone1">Telefono:</label>
-                <input type="text" id="Phone" name="Phone" value=""  />&nbsp;
-                
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" value="" /><br /><br />
-                
+        
+        <form style>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Phone1">Telefono:</label>
+                    <input type="number" class="form-control" id="Phone" name="Phone" value=""  placeholder="Telefono"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Nombre:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nombre"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="adress">Direccion:</label>
-                <input type="text" id="adress" name="adress" value="" />&nbsp;
-                
-                <label for="zone">Barrio:</label>
-                <input type="text" id="zone" name="zone" value="" /><br /><br />
-                
-                <label for="idCC">Cedula:</label>
-                <input type="text" id="idCC" name="idCC" value="" />&nbsp;
-                
-                <label for="birth">Cumpleanos:</label>
-                <input type="text" id="birth" name="birth" value="" /><br /><br />
-            </form>
+                <input type="text" class="form-control" id="adress" name="adress" value="" placeholder="1234 Main St"/>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="zone">Barrio:</label>
+                    <input type="text" class="form-control" id="zone" name="zone" value="" placeholder="Barrio"/>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="idCC">Cedula:</label>
+                    <input type="text" class="form-control" id="idCC" name="idCC" value="" placeholder="Cedula"/>
+                    
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="birth">Cumpleanos:</label>
+                    <input type="text" class="form-control" id="birth" name="birth" value="" placeholder="yyyy-mm-dd"/>
+                    
+                </div>
+            </div>
             
-        </center>
+        </form>
+            
+            
+        
 
         
     </div>
@@ -50,9 +67,10 @@ export default {
             nombre: "",
             direccion: "",
             barrio: "",
-            cedula: 0,
+            cedula: "",
             cumpleanos: "",
             balance: 0,
+            newCliente: {},
         };
     },
 
@@ -75,6 +93,7 @@ export default {
                     self.barrio = result.data.barrio
                     self.cedula = result.data.cedula
                     self.cumpleanos = result.data.cumpleanos
+                    confirm("Se encontro el cliente " + self.nombre);
                     document.getElementById("Phone").value = self.telefono;
                     document.getElementById("name").value = self.nombre;
                     document.getElementById("adress").value = self.direccion
@@ -85,8 +104,20 @@ export default {
                     
                 })
                 .catch((error) => {
-                    alert("ERROR Servidor");
+                    alert("No se encontro el cliente");
                 });
+
+        },
+        cleanCampos: function () {
+            
+            document.getElementById("Phone").value = ""
+            document.getElementById("name").value = ""
+            document.getElementById("adress").value = ""
+            document.getElementById("zone").value = ""
+            document.getElementById("idCC").value = ""
+            document.getElementById("birth").value = ""
+                    
+                
 
         },
         makeCliente: function () {
@@ -97,28 +128,22 @@ export default {
             this.cedula = document.getElementById("idCC").value
             this.cumpleanos = document.getElementById("birth").value
 
-            /*newCliente = {
+            this.newCliente = {
                             "telefono": parseInt(this.telefono, 10),
                             "nombre": this.nombre,
                             "direccion": this.direccion,
                             "barrio": this.barrio,
                             "cedula": this.cedula,
                             "cumpleanos": this.cumpleanos
-            };*/    
+            }    
 
             let self = this
             //const res = await axios.post('https://httpbin.org/post', { answer: 42 });
             
-            axios.post("https://restaurante-back-g1.herokuapp.com/cliente/crear/", {
-                            "telefono": parseInt(this.telefono, 10),
-                            "nombre": this.nombre,
-                            "direccion": this.direccion,
-                            "barrio": this.barrio,
-                            "cedula": this.cedula,
-                            "cumpleanos": this.cumpleanos
-            })
+            axios.post("https://restaurante-back-g1.herokuapp.com/cliente/crear/", this.newCliente)
                 .then((result) => {
-                    alert("Cliente Creado");
+                    window.confirm("Cliente Creado");
+                    
                     /*
                     self.telefono = result.data.telefono
                     self.nombre = result.data.nombre
@@ -161,6 +186,7 @@ export default {
 };
 
 </script>
+
 
 <style>
 #UserBalance {

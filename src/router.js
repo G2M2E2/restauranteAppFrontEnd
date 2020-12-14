@@ -2,7 +2,7 @@ import vueRouter from 'vue-router'
 import User from './components/User'
 import UserBalance from './components/UserBalance'
 import App from './App'
-import Cliente from './components/Cliente'
+import Cliente from './components/Cliente'   
 
 const router = new vueRouter({
         mode: 'history',
