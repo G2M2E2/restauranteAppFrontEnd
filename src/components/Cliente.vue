@@ -1,44 +1,47 @@
 <template>
     <div id="Cliente">
         <br />
-        <h2 style='text-align:center'>REGISTRO DE CLIENTES</h2>
+        <h2 >REGISTRO DE CLIENTES</h2>
         <br />
         
         <form>
-            
+            <div class = "formulario" >
 
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="Phone1">Telefono:</label>
-                    <input type="number" class="form-control" id="Phone" name="Phone" value=""  placeholder="Telefono"/>
+            <div class="form-row" >
+                <div class="form-group col-md-5">
+                    <label for="Phone1">Teléfono:</label>
+                    <input type="number" class="form-control" id="Phone" name="Phone" value=""  placeholder="Teléfono"/>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                     <label for="name">Nombre:</label>
                     <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nombre"/>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="adress">Direccion:</label>
-                <input type="text" class="form-control" id="adress" name="adress" value="" placeholder="1234 Main St"/>
+            <div class="form-row">
+                 <div class="form-group col-md-5">
+                    <label for="idCC">Cédula:</label>
+                    <input type="text" class="form-control" id="idCC" name="idCC" value="" placeholder="Cédula"/>  
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="birth">Cumpleaños:</label>
+                    <input type="text" class="form-control" id="birth" name="birth" value="" placeholder="aaaa-mm-dd"/>
+                </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
+                <label for="adress">Dirección:</label>
+                <input type="text" class="form-control" id="adress" name="adress" value="" placeholder="Cra. 24 # ..."/>
+            </div>
+            
+                <div class="form-group col-md-5">
                     <label for="zone">Barrio:</label>
                     <input type="text" class="form-control" id="zone" name="zone" value="" placeholder="Barrio"/>
-
+                
                 </div>
-                <div class="form-group col-md-4">
-                    <label for="idCC">Cedula:</label>
-                    <input type="text" class="form-control" id="idCC" name="idCC" value="" placeholder="Cedula"/>
-                    
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="birth">Cumpleanos:</label>
-                    <input type="text" class="form-control" id="birth" name="birth" value="" placeholder="yyyy-mm-dd"/>
-                    
-                </div>
+               </div>
             </div>
-            <br />
+            <br>
+            <div class="botones">
             <div style='text-align:center'>
                 <right>
                     <button type="button" class="btn btn-warning" v-on:click="myProvider">Lista</button>
@@ -48,10 +51,10 @@
                     <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
                     <button type="button" class="btn btn-warning" >Eliminar</button><br /><br />
                     
-                    
+
                 </right>
             </div>
-            
+ 
             
             
             
@@ -109,18 +112,18 @@ export default {
                     self.barrio = result.data.barrio
                     self.cedula = result.data.cedula
                     self.cumpleanos = result.data.cumpleanos
-                    confirm("Se encontro el cliente " + self.nombre);
+                    confirm("Se encontró el cliente " + self.nombre);
                     document.getElementById("Phone").value = self.telefono;
                     document.getElementById("name").value = self.nombre;
                     document.getElementById("adress").value = self.direccion
                     document.getElementById("zone").value = self.barrio
                     document.getElementById("idCC").value = self.cedula
                     document.getElementById("birth").value = self.cumpleanos
-                    document.getElementById("11").value = "Se encontro usuario" + self.nombre
+                    document.getElementById("11").value = "Se encontró usuario" + self.nombre
                     
                 })
                 .catch((error) => {
-                    alert("No se encontro el cliente");
+                    alert("No se encontró el cliente");
                 });
 
         },
@@ -188,45 +191,57 @@ export default {
     },   
 
 };
-
 </script>
 
-
 <style>
-
-
-#UserBalance {
+#Cliente {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-content: center;
+    justify-items: center; 
+    margin-bottom: 0%;
 }
-#UserBalance h2 {
-    font-size: 50px;
-    color: #283747;
+#Cliente h2{
+    width: 100%;
+    text-align: center;
+    margin-top: 1%;
+    color:  #fffdfd;
 }
-#UserBalance span {
-    color: crimson;
+#Cliente .formulario {
+    color:  #fffdfd;
+    align-content: center;
+    display: block;
+    margin-left: 15%;
     font-weight: bold;
+    margin-bottom: 1%;
 }
 
-/*button{
-    color: #000000;
-    background: #f5a018;
-    border: 1px solid #007efc;
-    border-radius: 5px;
-    padding: 10px 20px;
+#Cliente button {
+    color:  #181818;  
 }
-button:hover{
-    color: #000000;
-    background: #7fbfff;
-    border: 1px solid #358035;
-}*/
-b-table{
+#Cliente .btn-warning{
+    background-color: #f5a018;
+}
+#Cliente .botones {
+    color:  #181818;
+    width: 100%;
+    text-align: center;
+    margin-top: 0%;
+}
+
+.b-table{
     overflow:scroll;
-    height:10px;
-    width:500px;
+    width:80%;
+    margin-left: 10%;
+    background-color: #fffdfd;
+    align-content: center;
+    justify-items: center; 
+    margin-bottom: 5%;
 }
+.b-table-sticky-header, .table-responsive, [class*=table-responsive-] {
+    margin-bottom: 0rem;
+}
+
 </style>
