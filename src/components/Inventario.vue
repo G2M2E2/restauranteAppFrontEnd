@@ -5,32 +5,32 @@
         <br />
         
         <form>
-            <div class = "formulario" >np
+            <div class = "formulario" >
 
                 <div class="form-row" >
                     <div class="form-group col-md-5">
                         <label for="idprod">Id:</label>
-                        <input type="text" class="form-control" id="idprod" name="idprod" value=""  placeholder="CA01"/>
+                        <input type="text" class="form-control" id="idprod" name="idprod" value=""/>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="nomprod">Nombre:</label>
-                        <input type="text" class="form-control" id="nomprod" name="nomprod" value="" placeholder="Churrasco"/>
+                        <input type="text" class="form-control" id="nomprod" name="nomprod" value=""/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="precprod">Precio:</label>
-                        <input type="number" class="form-control" id="precprod" name="precprod" value="" placeholder="$13000"/>  
+                        <input type="number" class="form-control" id="precprod" name="precprod" value=""/>  
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cantprod">Cantidad:</label>
-                        <input type="number" class="form-control" id="cantprod" name="cantprod" value="" placeholder="5"/>
+                        <input type="number" class="form-control" id="cantprod" name="cantprod" value=""/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="catprod">Categoría:</label>
-                        <input type="text" class="form-control" id="catprod" name="catprod" value="" placeholder="Carnes"/>
+                        <input type="text" class="form-control" id="catprod" name="catprod" value=""/>
                     </div>
                 </div>
             </div>
