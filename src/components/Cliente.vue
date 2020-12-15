@@ -178,9 +178,9 @@ export default {
             this.cliente = {
                             "telefono": this.telefono
                             } 
-            let telefono = this.cliente
+            let tel_delete = this.cliente
             let self = this
-            axios.delete("https://restaurante-back-g1.herokuapp.com/cliente/delete/", {data: telefono})
+            axios.delete("https://restaurante-back-g1.herokuapp.com/cliente/delete/", {data: tel_delete})
                 .then((result) => {
                     
                     confirm("Se elimino de manera satisfactoria");

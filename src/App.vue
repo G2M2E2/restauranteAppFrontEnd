@@ -8,7 +8,7 @@
         <nav>
           <button v-on:click="init" v-if="is_auth">Inicio</button>
           <button v-on:click="getCliente" v-if="is_auth" > Cliente </button>
-          <button v-if="is_auth">Inventario</button>
+          <button v-on:click="getInventario">Inventario</button>
           <button v-if="is_auth">Ventas</button>
           <button v-if="is_auth">Cerrar Sesión</button>
         </nav>
@@ -52,6 +52,13 @@
           this.$router.push({name: "cliente", params:{ username: username }})
         }
       },
+      getInventario: function(){
+        if(this.$route.name != "inventario"){
+          let username = localStorage.getItem("current_username")
+          this.$router.push({name:"inventario", params:{username:username}
+          })
+        }
+      }
 
     },
 
@@ -107,7 +114,7 @@
   .header nav button{
     color: #E5E7E9;
     background: #19191a;
-    border: 1px solid #E5E7E9;
+    border: 1px solid #19191a;
     border-radius: 5px;
     padding: 5px 30px;
     height: 45%;
