@@ -51,18 +51,11 @@
                     
                 </right>
             </div>
-            
-            
-            
-            
-            
+        
         </form>
         <br />
         
         <b-table sticky-header ref="table" id="my-table" striped hover :items="items"></b-table>
-                    
-        
-
         
     </div>
 </template>
@@ -92,9 +85,9 @@ export default {
 
     methods: {
         init: function () {
-        if (this.$route.name != "user") {
+        if (this.$route.name != "cliente") {
             let username = input.Phone.getItem("current_username");
-            this.$router.push({ name: "user", params: { username: username } });
+            this.$router.push({name: "cliente", params:{ username: 'username' }});
         }
         },
 
@@ -112,11 +105,10 @@ export default {
                     confirm("Se encontro el cliente " + self.nombre);
                     document.getElementById("Phone").value = self.telefono;
                     document.getElementById("name").value = self.nombre;
-                    document.getElementById("adress").value = self.direccion
-                    document.getElementById("zone").value = self.barrio
-                    document.getElementById("idCC").value = self.cedula
-                    document.getElementById("birth").value = self.cumpleanos
-                    document.getElementById("11").value = "Se encontro usuario" + self.nombre
+                    document.getElementById("adress").value = self.direccion;
+                    document.getElementById("zone").value = self.barrio;
+                    document.getElementById("idCC").value = self.cedula;
+                    document.getElementById("birth").value = self.cumpleanos;
                     
                 })
                 .catch((error) => {
@@ -132,9 +124,7 @@ export default {
             document.getElementById("zone").value = ""
             document.getElementById("idCC").value = ""
             document.getElementById("birth").value = ""
-                    
-                
-
+                                
         },
         makeCliente: function () {
             this.telefono = document.getElementById("Phone").value
@@ -152,10 +142,7 @@ export default {
                             "cedula": this.cedula,
                             "cumpleanos": this.cumpleanos
             }    
-
-            let self = this
-            //const res = await axios.post('https://httpbin.org/post', { answer: 42 });
-            
+            let self = this            
             axios.post("https://restaurante-back-g1.herokuapp.com/cliente/crear/", this.newCliente)
                 .then((result) => {
                     window.confirm("Cliente Creado");
@@ -164,8 +151,9 @@ export default {
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
+            
+            this.myProvider()
             this.$refs.table.refresh()
-            myProvider()
 
         },
         myProvider: function () {
