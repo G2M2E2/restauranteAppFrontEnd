@@ -3,6 +3,7 @@
   <div id="app">
   
       <div class="header">
+        <img src="./assets/logo_carb.png">
         <h1>Asados Carbón de Leña</h1>
         <nav>
           <button v-on:click="init" v-if="is_auth">Inicio</button>
@@ -65,16 +66,19 @@
 
 <style>
   body{
-    margin: 0 0 0 0;
+    margin: 0%;
+    background-image: url("./assets/carne.jpg");
+    background-position: center;
   }
   .header{
     margin: 0%;
-    padding: 0;
+    margin-right: -3px;
+    padding: 0%;
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     min-height: 100px;
 
-    background-color: #181818;
+    background-color: #19191a;
     color:#f5a018;
 
     display: flex;
@@ -82,48 +86,57 @@
     align-items: center;
     border-bottom: 1px solid #f5a018;
   }
+  .header img{
+    height: 95%;
+    margin: 2rem
+  }
   .header h1{
-    width: 30%;
+    width: 40%;
     text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
   }
   .header nav {
     height: 100%;
-    width: 45%;
-
+    width: 55%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    font-size: 20px;
+    font-size: 80%;
   }
   .header nav button{
     color: #E5E7E9;
-    background: #181818;
+    background: #19191a;
     border: 1px solid #E5E7E9;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 30px;
+    height: 45%;
+    margin: 0.2rem;
   }
   .header nav button:hover{
-    color: #181818;
+    color: #19191a;
     background: #E5E7E9;
     border: 1px solid #E5E7E9;
   }
   .main-component{
     height: auto;
-    min-height: 75vh;
+    min-height: 80vh;
     margin: 0%;
     padding: 0%;
-    background: #FDFEFE ;
+    margin-bottom: 0%;
+    background: rgba(0,0,0,0.8);
   }
   .footer{
     margin: 0;
     padding: 0;
+    margin-bottom: 0%;
     width: 100%;
-    height: 10vh;
+    height: 19vh;
     min-height: 100px;
     background-color: #181818;
     color: #f5a018;
     border-top: 1px solid #f5a018;
+    display: flex;
   }
   .footer h2{
     width: 100%;
@@ -133,11 +146,12 @@
     align-items: center;
   }
   .footer p {
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  justify-items: center;
-  vertical-align: middle;
-  text-align: center;
-}
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    justify-items: center;
+    vertical-align: middle;
+    text-align: center;
+    padding: 1%;
+  }
 </style>
