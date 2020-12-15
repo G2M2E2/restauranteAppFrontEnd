@@ -18,17 +18,15 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-3">
                         <label for="precprod">Precio:</label>
                         <input type="number" class="form-control" id="precprod" name="precprod" value="" placeholder="Precio"/>  
                     </div>
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-3">
                         <label for="cantprod">Cantidad:</label>
                         <input type="number" class="form-control" id="cantprod" name="cantprod" value="" placeholder="Cantidad"/>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-4">
                         <label for="catprod">Categoría:</label>
                         <input type="text" class="form-control" id="catprod" name="catprod" value="" placeholder="Categoría"/>
                     </div>
