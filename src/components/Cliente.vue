@@ -49,7 +49,7 @@
                         <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
                         <!-- <button type="button" class="btn btn-warning" >Actualizar</button> -->
                         <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
-                        <!-- <button type="button" class="btn btn-warning" >Eliminar</button><br /><br /> -->
+                        <button type="button" class="btn btn-warning" v-on:click="deleteCliente">Eliminar</button><br /><br />
                         
 
                     </right>
@@ -173,6 +173,27 @@ export default {
                 return []
             })
         },
+        deleteCliente: function () {
+            this.telefono = document.getElementById("Phone").value
+            this.cliente = {
+                            "telefono": this.telefono
+                            } 
+            let telefono = this.cliente
+            let self = this
+            axios.delete("https://restaurante-back-g1.herokuapp.com/cliente/delete/", {data: telefono})
+                .then((result) => {
+                    
+                    confirm("Se elimino de manera satisfactoria");
+                    
+                    
+                })
+                .catch((error) => {
+                    alert("ERROR Servidor");
+                });
+            this.myProvider()
+            this.$refs.table.refresh()
+
+        },
         
         
 
@@ -228,6 +249,7 @@ export default {
 }
 .b-table-sticky-header, .table-responsive, [class*=table-responsive-] {
     margin-bottom: 0rem;
+    text-align: center;
     margin: 5%;
 }
 
