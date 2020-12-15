@@ -59,7 +59,7 @@
       localStorage.setItem('current_username', 'Admin')
       localStorage.setItem('isAuth', true)
 
-      this.$router.push({name: "user", params:{ username: 'Admin' }})
+      this.$router.push({name: "cliente", params:{ username: 'Admin' }})
     }
   }
 </script>
@@ -131,7 +131,7 @@
     padding: 0;
     margin-bottom: 0%;
     width: 100%;
-    height: 19vh;
+    height: 13vh;
     min-height: 100px;
     background-color: #181818;
     color: #f5a018;

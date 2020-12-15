@@ -7,52 +7,53 @@
         <form>
             <div class = "formulario" >
 
-            <div class="form-row" >
-                <div class="form-group col-md-5">
-                    <label for="Phone1">Teléfono:</label>
-                    <input type="number" class="form-control" id="Phone" name="Phone" value=""  placeholder="Teléfono"/>
+                <div class="form-row" >
+                    <div class="form-group col-md-5">
+                        <label for="Phone1">Teléfono:</label>
+                        <input type="number" class="form-control" id="Phone" name="Phone" value=""  placeholder="Teléfono"/>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nombre"/>
+                    </div>
                 </div>
-                <div class="form-group col-md-5">
-                    <label for="name">Nombre:</label>
-                    <input type="text" class="form-control" id="name" name="name" value="" placeholder="Nombre"/>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="idCC">Cédula:</label>
+                        <input type="text" class="form-control" id="idCC" name="idCC" value="" placeholder="Cédula"/>  
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="birth">Cumpleaños:</label>
+                        <input type="text" class="form-control" id="birth" name="birth" value="" placeholder="AAAA-MM-DD"/>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                 <div class="form-group col-md-5">
-                    <label for="idCC">Cédula:</label>
-                    <input type="text" class="form-control" id="idCC" name="idCC" value="" placeholder="Cédula"/>  
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="birth">Cumpleaños:</label>
-                    <input type="text" class="form-control" id="birth" name="birth" value="" placeholder="aaaa-mm-dd"/>
-                </div>
-            </div>
-            <div class="form-row">
-            <div class="form-group col-md-5">
-                <label for="adress">Dirección:</label>
-                <input type="text" class="form-control" id="adress" name="adress" value="" placeholder="Cra. 24 # ..."/>
-            </div>
-            
-                <div class="form-group col-md-5">
-                    <label for="zone">Barrio:</label>
-                    <input type="text" class="form-control" id="zone" name="zone" value="" placeholder="Barrio"/>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="adress">Dirección:</label>
+                        <input type="text" class="form-control" id="adress" name="adress" value="" placeholder="Cra. 24 # ..."/>
+                    </div>
                 
+                    <div class="form-group col-md-5">
+                        <label for="zone">Barrio:</label>
+                        <input type="text" class="form-control" id="zone" name="zone" value="" placeholder="Barrio"/>
+                    
+                    </div>
                 </div>
-               </div>
             </div>
             <br>
             <div class="botones">
-            <div style='text-align:center'>
-                <right>
-                    <button type="button" class="btn btn-warning" v-on:click="myProvider">Lista</button>
-                    <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
-                    <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
-                    <button type="button" class="btn btn-warning" >Actualizar</button>
-                    <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
-                    <button type="button" class="btn btn-warning" >Eliminar</button><br /><br />
-                    
+                <div style='text-align:center'>
+                    <right>
+                        <button type="button" class="btn btn-warning" v-on:click="myProvider">Lista</button>
+                        <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
+                        <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
+                        <!-- <button type="button" class="btn btn-warning" >Actualizar</button> -->
+                        <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
+                        <!-- <button type="button" class="btn btn-warning" >Eliminar</button><br /><br /> -->
+                        
 
-                </right>
+                    </right>
+                </div>
             </div>
         
         </form>
@@ -173,6 +174,7 @@ export default {
             })
         },
         
+        
 
         
         
@@ -221,7 +223,6 @@ export default {
 
 .b-table{
     overflow:auto;
-    width:80%;
     margin-left: 0%;
     background-color: #fffdfd;
 }
