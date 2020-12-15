@@ -141,6 +141,9 @@ export default {
                     document.getElementById("cantprod").value = self.cantidad;
                     document.getElementById("catprod").value = self.categoria;                 
                 })
+                .then((result) => {
+                    alert("Producto Eliminado");
+                })
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });

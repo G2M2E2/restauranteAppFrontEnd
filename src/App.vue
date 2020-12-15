@@ -64,10 +64,10 @@
     },
 
     beforeCreate: function(){
-      localStorage.setItem('current_username', 'Admin')
+      localStorage.setItem('current_username', 'username')
       localStorage.setItem('isAuth', true)
 
-      this.$router.push({name: "user", params:{ username: 'Admin' }})
+      this.$router.push({name: "cliente", params:{ username: 'username' }})
     }
   }
 </script>
@@ -76,7 +76,7 @@
   body {
     margin: 0 0 0 0;
     background-color: #19191a;
-    background-image: url("./assets/lena2.jpg");
+    background-image: url("./assets/carne_opaca.jpg");
     background-size: 100%;
     overflow: hidden;
   }
