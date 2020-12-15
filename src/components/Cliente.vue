@@ -232,16 +232,14 @@ export default {
 }
 
 .b-table{
-    overflow:scroll;
+    overflow:auto;
     width:80%;
-    margin-left: 10%;
+    margin-left: 0%;
     background-color: #fffdfd;
-    align-content: center;
-    justify-items: center; 
-    margin-bottom: 5%;
 }
 .b-table-sticky-header, .table-responsive, [class*=table-responsive-] {
     margin-bottom: 0rem;
+    margin: 5%;
 }
 
 </style>
