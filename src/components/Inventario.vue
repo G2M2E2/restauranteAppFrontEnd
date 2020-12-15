@@ -72,7 +72,7 @@ export default {
             cantidad: 0,
             categoria: "",
             newProducto: {},
-            items: []
+            items: [],
         };
     },
 
