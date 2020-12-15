@@ -10,27 +10,27 @@
                 <div class="form-row" >
                     <div class="form-group col-md-5">
                         <label for="idprod">Id:</label>
-                        <input type="text" class="form-control" id="idprod" name="idprod" value=""/>
+                        <input type="text" class="form-control" id="idprod" name="idprod" value=""  placeholder="Id"/>
                     </div>
                     <div class="form-group col-md-5">
                         <label for="nomprod">Nombre:</label>
-                        <input type="text" class="form-control" id="nomprod" name="nomprod" value=""/>
+                        <input type="text" class="form-control" id="nomprod" name="nomprod" value="" placeholder="Nombre"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="precprod">Precio:</label>
-                        <input type="number" class="form-control" id="precprod" name="precprod" value=""/>  
+                        <input type="number" class="form-control" id="precprod" name="precprod" value="" placeholder="Precio"/>  
                     </div>
                     <div class="form-group col-md-5">
                         <label for="cantprod">Cantidad:</label>
-                        <input type="number" class="form-control" id="cantprod" name="cantprod" value=""/>
+                        <input type="number" class="form-control" id="cantprod" name="cantprod" value="" placeholder="Cantidad"/>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="catprod">Categoría:</label>
-                        <input type="text" class="form-control" id="catprod" name="catprod" value=""/>
+                        <input type="text" class="form-control" id="catprod" name="catprod" value="" placeholder="Categoría"/>
                     </div>
                 </div>
             </div>
@@ -71,6 +71,8 @@ export default {
             precio: 0,
             cantidad: 0,
             categoria: "",
+            newProducto: {},
+            items: []
         };
     },
 
