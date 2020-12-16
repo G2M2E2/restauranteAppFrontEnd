@@ -43,16 +43,12 @@
             <br>
             <div class="botones">
                 <div style='text-align:center'>
-                    <right>
                         <button type="button" class="btn btn-warning" v-on:click="myProvider">Lista</button>
                         <button type="button" class="btn btn-warning"  v-on:click="findCliente">Buscar</button>
                         <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
                         <!-- <button type="button" class="btn btn-warning" >Actualizar</button> -->
                         <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
                         <button type="button" class="btn btn-warning" v-on:click="deleteCliente">Eliminar</button><br /><br />
-                        
-
-                    </right>
                 </div>
             </div>
         
