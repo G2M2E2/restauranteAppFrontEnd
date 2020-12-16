@@ -152,12 +152,10 @@ export default {
                             } 
             let id = this.producto
             let self = this
-            axios.delete("https://restaurante-back-g1.herokuapp.com/producto/delete/" + {data: id})
+            axios.delete("https://restaurante-back-g1.herokuapp.com/producto/delete/", {data: id})
                 .then((result) => {
                     
-                    confirm("Se elimino de manera satisfactoria");
-                    
-                    
+                    confirm("El producto se eliminó exitosamente");                
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
