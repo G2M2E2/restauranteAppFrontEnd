@@ -70,7 +70,7 @@ export default {
             cantidad: 0,
             categoria: "",
             newProducto: {},
-            items: [],
+            items: []
         };
     },
 
@@ -79,7 +79,7 @@ export default {
         init: function () {
         if (this.$route.name != "inventario") {
             let username = input.idprod.getItem("current_username");
-            this.$router.push({ name: "inventario", params: { username: 'username' }});
+            this.$router.push({name: "inventario", params: { username: 'username' }});
         }
         },
 
@@ -113,10 +113,10 @@ export default {
             this.categoria = document.getElementById("catprod").value
 
             this.newProducto = {
-                            "id": parseInt(this.id),
+                            "id": this.id,
                             "nombre": this.nombre,
-                            "precio": this.precio,
-                            "cantidad": this.cantidad,
+                            "precio": parseInt(this.precio),
+                            "cantidad": parseInt(this.cantidad),
                             "categoria": this.categoria,
             }   
             let self = this          
@@ -146,7 +146,7 @@ export default {
         },
 
         deleteProducto: function () {
-            this.id = document.getElementById("idprod").
+            this.id = document.getElementById("idprod").value
             this.producto = {
                             "id": this.id
                             } 
