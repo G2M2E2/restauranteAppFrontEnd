@@ -19,6 +19,7 @@
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-warning">Ingresar</button>
             </form>
         </center>
     </div>
@@ -48,6 +49,11 @@ export default {
 </script>
 
 <style>
+#User span{
+    color: #f5a018;
+    font-weight: bold;
+}
+
 #User {
     width: 100%;
     height: 100%;
@@ -70,9 +76,11 @@ export default {
     margin-left: 37%;
     font-weight: bold;
     margin-bottom: 1%;
+    place-content: center;
 }
-    #User span{
-        color: #f5a018;
-        font-weight: bold;
-    }
+
+#User button {
+    color:  #181818;
+}
+
 </style>
