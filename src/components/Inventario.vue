@@ -28,7 +28,9 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="catprod">Categoría:</label>
-                        <input type="text" class="form-control" id="catprod" name="catprod" value="" placeholder="Categoría"/>
+                        <!--<input type="text" class="form-control" id="catprod" name="catprod" value="" placeholder="Categoría"/>-->
+                        <!--Para opciones desplegables: -->
+                        <b-form-select id="catprod" v-model="selected" :options="options" ></b-form-select>
                     </div>
                 </div>
             </div>
@@ -54,11 +56,9 @@
 </template>
 
 <script>
-
 import axios from "axios";
 export default {
     name: "Inventario",
-
     data: function () {
         return {
             id: "",
@@ -67,11 +67,34 @@ export default {
             cantidad: 0,
             categoria: "",
             newProducto: {},
-            items: []
+            items: [],
+            /////para agregar las opciones desplegables/////
+            selected: null,
+            options: [
+                {value: null, text: 'Seleccione una opción'},
+                {value: 'acompanante', text: 'Acompañante'},
+                {value: 'arroz_pasta', text: 'Arroz o pasta'},
+                {value: 'bebidas', text: 'Bebidas'},
+                {value: 'carnes', text: 'Carnes'},
+                {value: 'cerdo', text: 'Cerdo'},
+                {value: 'crepes', text: 'Crepes'},
+                {value: 'desayunos', text: 'Desayunos'},
+                {value: 'ensalada', text: 'Ensalada'},
+                {value: 'entradas', text: 'Entradas'},
+                {value: 'hamburguesa', text: 'Hamburguesa'},
+                {value: 'menu infantil', text: 'Menú infantil'},
+                {value: 'patacon', text: 'Patacón'},
+                {value: 'pescados', text: 'Pescados'},
+                {value: 'picada', text: 'Picada'},
+                {value: 'pinchos', text: 'Pinchos'},
+                {value: 'pollo', text: 'Pollo'},
+                {value: 'tipicos', text: 'Típicos'},
+                {value: 'varios', text: 'Varios'},
+                {value: 'vinos', text: 'Vinos'},
+            ]
+
         };
     },
-
-
     methods: {
         init: function () {
         if (this.$route.name != "inventario") {
@@ -79,7 +102,6 @@ export default {
             this.$router.push({name: "inventario", params: { username: 'username' }});
         }
         },
-
         findProducto: function () {
             this.id = document.getElementById("idprod").value
             let self = this
@@ -95,20 +117,19 @@ export default {
                     document.getElementById("nomprod").value = self.nombre;
                     document.getElementById("precprod").value = self.precio;
                     document.getElementById("cantprod").value = self.cantidad;
-                    document.getElementById("catprod").value = self.categoria;                 
+                   //document.getElementById("catprod").value = self.categoria;   
+                   self.selected = self.categoria;              
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
         },
-
         createProducto: function () {
             this.id = document.getElementById("idprod").value
             this.nombre = document.getElementById("nomprod").value
             this.precio = document.getElementById("precprod").value
             this.cantidad = document.getElementById("cantprod").value
             this.categoria = document.getElementById("catprod").value
-
             this.newProducto = {
                             "id": this.id,
                             "nombre": this.nombre,
@@ -127,7 +148,6 @@ export default {
             this.myProvider()
             this.$refs.table.refresh()
         },
-
         myProvider: function () {
             console.log("Entro");
             let self = this
@@ -141,7 +161,6 @@ export default {
                 return []
             })
         },
-
         deleteProducto: function () {
             this.id = document.getElementById("idprod").value
             this.producto = {
@@ -157,17 +176,14 @@ export default {
                 .then((result) => {
                     
                     confirm("El producto se eliminó exitosamente");
-                    
-                    
+                        
                 })
                 .catch((error) => {
                     alert("ERROR Servidor");
                 });
             this.myProvider()
             this.$refs.table.refresh()
-
         },
-
         cleanCampos: function () {
             
             document.getElementById("idprod").value = ""
@@ -205,7 +221,6 @@ export default {
     font-weight: bold;
     margin-bottom: 1%;
 }
-
 #Inventario button {
     color:  #181818;  
 }
@@ -218,7 +233,6 @@ export default {
     text-align: center;
     margin-top: 0%;
 }
-
 .b-table{
     overflow:auto;
     margin-left: 0%;
@@ -229,5 +243,4 @@ export default {
     text-align: center;
     margin: 5%;
 }
-
 </style>

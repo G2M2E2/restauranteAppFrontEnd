@@ -67,7 +67,7 @@
       localStorage.setItem('current_username', 'Admin')
       localStorage.setItem('isAuth', true)
 
-      this.$router.push({name: "cliente", params:{ username: 'Admin' }})
+      this.$router.push({name: "user", params:{ username: 'Admin' }})
     }
   }
 </script>
