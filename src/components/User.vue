@@ -1,15 +1,15 @@
 <template>
     <div id="User">
         <br />
-        <h2 >Hola <span> {{username}} </span> Bienvenido</h2>
+        <h2 >Bienvenido</h2>
         <br />
         <center>
             <form>
                 <div class = "formulario" >
                     <div class="form-row" >
                         <div class="form-group col-md-5">
-                            <label for="username">Usuario:</label>
-                            <input type="text" class="form-control" id="username" name="username" value=""  placeholder="Ingrese su usuario"/>
+                            <label for="usuario">Usuario:</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" value=""  placeholder="Ingrese su usuario"/>
                         </div>
                     </div>
                     <div class="form-row" >
@@ -17,9 +17,14 @@
                             <label for="password">Contraseña:</label>
                             <input type="text" class="form-control" id="password" name="password" value=""  placeholder="Ingrese su contraseña"/>
                         </div>
+                        <div>
+                            <br>
+                            <button type="button" class="btn btn-warning" v-on:click="mostrarContrasena">Mostrar contraseña</button>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-warning">Ingresar</button>
+                <button type="submit" class="btn btn-warning">Ingresar</button><br><br>
+                <button type="button" class="btn btn-warning">Olvidó su contraseña</button>
             </form>
         </center>
     </div>
@@ -40,8 +45,17 @@ export default {
     methods: {
         init: function () {
         if (this.$route.name != "user") {
-            let username = input.username.getItem("current_username");
+            let username = input.usuario.getItem("current_username");
             this.$router.push({name: "user", params: { username: 'username' }});
+        }
+        },
+
+        mostrarContrasena: function (){
+        var tipo = document.getElementById("password");
+        if(tipo.type == "password"){
+            tipo.type = "text";
+        }else{
+            tipo.type = "password";
         }
         }
     },
