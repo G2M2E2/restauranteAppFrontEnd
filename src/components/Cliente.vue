@@ -49,7 +49,7 @@
                         <button type="button" class="btn btn-warning" v-on:click="makeCliente">Crear</button>
                         <!-- <button type="button" class="btn btn-warning" >Actualizar</button> -->
                         <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
-                        <!-- <button type="button" class="btn btn-warning" >Eliminar</button><br /><br /> -->
+                        <button type="button" class="btn btn-warning" v-on:click="deleteCliente">Eliminar</button><br /><br />
                         
 
                     </right>
@@ -98,7 +98,7 @@ export default {
         findCliente: function () {
             this.telefono = document.getElementById("Phone").value
             let self = this
-            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/consulta/" + this.telefono)
+            axios.get("http://127.0.0.1:8000/cliente/consulta/" + this.telefono)
                 .then((result) => {
                     self.telefono = result.data.telefono
                     self.nombre = result.data.nombre
@@ -147,7 +147,7 @@ export default {
                             "cumpleanos": this.cumpleanos
             }    
             let self = this            
-            axios.post("https://restaurante-back-g1.herokuapp.com/cliente/crear/", this.newCliente)
+            axios.post("http://127.0.0.1:8000/cliente/crear/", this.newCliente)
                 .then((result) => {
                     window.confirm("Cliente Creado");
                     
@@ -164,7 +164,7 @@ export default {
             console.log("Entro");
             let self = this
             
-            axios.get("https://restaurante-back-g1.herokuapp.com/cliente/lista/")
+            axios.get("http://127.0.0.1:8000/cliente/lista/")
             .then((result) => {
                 self.items = result.data
             }).catch(error => {
@@ -172,6 +172,27 @@ export default {
                 alert("ERROR Servidor");
                 return []
             })
+        },
+        deleteCliente: function () {
+            this.telefono = document.getElementById("Phone").value
+            this.cliente = {
+                            "telefono": this.telefono
+                            } 
+            let telefono = this.cliente
+            let self = this
+            axios.delete("https://restaurante-back-g1.herokuapp.com/cliente/delete/", {data: telefono})
+                .then((result) => {
+                    
+                    confirm("Se elimino de manera satisfactoria");
+                    
+                    
+                })
+                .catch((error) => {
+                    alert("ERROR Servidor");
+                });
+            this.myProvider()
+            this.$refs.table.refresh()
+
         },
         
         
@@ -228,6 +249,7 @@ export default {
 }
 .b-table-sticky-header, .table-responsive, [class*=table-responsive-] {
     margin-bottom: 0rem;
+    text-align: center;
     margin: 5%;
 }
 

@@ -8,14 +8,14 @@
         <nav>
           <button v-on:click="init" v-if="is_auth">Inicio</button>
           <button v-on:click="getCliente" v-if="is_auth" > Cliente </button>
-          <button v-if="is_auth">Inventario</button>
+          <button v-on:click="getInventario" v-if="is_auth">Inventario</button>
           <button v-if="is_auth">Ventas</button>
-          <button v-if="is_auth">Cerrar Sesión</button>
+          <button v-on:click="logOut" v-if="is_auth" >Cerrar Sesión</button>
         </nav>
 
       </div>
       <div class="main-component">
-        <router-view></router-view>
+        <router-view v-on:log-in="logIn"></router-view>
       </div>
       <div class="footer">
         <p>Calle 48 # 27-01. Barrancabermeja, Colombia<br>
@@ -26,6 +26,8 @@
 </template>
 
 <script>
+
+import vueRouter from 'vue-router'
   export default {
     name: 'App',
 
@@ -38,12 +40,37 @@
     },
 
     methods: {
+      updateAuth: function(){
+        var self = this
+        self.is_auth  = localStorage.getItem('isAuth') || false
+
+        if(self.is_auth == false)
+          self.$router.push({name: "user_auth"})
+
+        else{
+          let username = localStorage.getItem("current_username")
+          self.$router.push({name: "user", params:{ username: username }})
+        }  
+      },
+
+      logIn: function(username){
+        localStorage.setItem('current_username', username)
+        localStorage.setItem('isAuth', true)
+        this.updateAuth()
+      },
+
+      logOut: function(){
+        localStorage.removeItem('isAuth')
+        localStorage.removeItem('current_username')
+        this.updateAuth()
+      },
 
       init: function(){
         if(this.$route.name != "user"){
           let username = localStorage.getItem("current_username")
           this.$router.push({name: "user", params:{ username: username }})
         }
+        
       },
 
       getCliente: function(){
@@ -53,14 +80,21 @@
         }
       },
 
+      getInventario: function(){
+        if(this.$route.name != "inventario"){
+          let username = localStorage.getItem("current_username")
+          this.$router.push({name:"inventario", params:{username:username}
+          })
+        }
+      },
+
     },
-
-    beforeCreate: function(){
-      localStorage.setItem('current_username', 'Admin')
-      localStorage.setItem('isAuth', true)
-
-      this.$router.push({name: "cliente", params:{ username: 'Admin' }})
+    created: function(){
+      this.$router.push({name: "root"})
+      this.updateAuth()
     }
+   
+    
   }
 </script>
 
