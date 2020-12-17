@@ -42,12 +42,9 @@
                         <!-- <button type="button" class="btn btn-warning" >Actualizar</button> -->
                         <button type="button" class="btn btn-warning" v-on:click="cleanCampos">Limpiar</button>
                         <button type="button" class="btn btn-warning" v-on:click="deleteProducto">Eliminar</button><br /><br />
-                        
-
                     </right>
                 </div>
             </div>
-        
         </form>
         <br />
         

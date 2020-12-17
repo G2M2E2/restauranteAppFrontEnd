@@ -158,8 +158,8 @@ export default {
             
             this.myProvider()
             this.$refs.table.refresh()
-
         },
+        
         myProvider: function () {
             console.log("Entro");
             let self = this
